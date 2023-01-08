@@ -2,10 +2,10 @@ package com.mmaia.studies.mongodbstudies
 
 import com.mmaia.studies.mongodbstudies.generator.TransactionDocumentGenerator
 import com.mmaia.studies.mongodbstudies.repository.TransactionRepository
+import kotlinx.coroutines.*
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
-import kotlinx.coroutines.*
 
 
 @Service
@@ -20,7 +20,9 @@ class TransactionService(
         GlobalScope.launch {
             while (true) {
                 val transaction = TransactionDocumentGenerator.gen(transactionDocumentGenerator)
-                transactionRepository.save(transaction)
+                withContext(Dispatchers.IO) {
+                    transactionRepository.save(transaction)
+                }
             }
         }
         println("exit fun createAndSave....")
