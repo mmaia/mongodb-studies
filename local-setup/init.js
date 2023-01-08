@@ -5,3 +5,4 @@ db.transactions.createIndex({ "guid": "hashed"});
 db.transactions.createIndex({ "guid": 1, "executedAt": 1});
 db.transactions.createIndex({ "guid": 1, "executedAt": 1, "receivedMoney.currency": 1, "sentMoney.currency": 1, "type": 1});
 db.transactions.createIndex({ "executedAt": -1});
+db.transactions.createIndex({ "guid": 1, "originId": 1}, { unique: true });

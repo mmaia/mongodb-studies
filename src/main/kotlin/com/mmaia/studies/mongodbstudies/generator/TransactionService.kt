@@ -22,7 +22,7 @@ class TransactionService(
                 val transactionList = mutableListOf<TransactionDocument>()
                 mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, TransactionDocument::class.java)
                     .let { bulkOperations ->
-                        repeat(1000) {
+                        repeat(1_000) {
                             transactionList.add(TransactionDocumentGenerator.gen(transactionDocumentGenerator))
                         }
                         bulkOperations.insert(transactionList)

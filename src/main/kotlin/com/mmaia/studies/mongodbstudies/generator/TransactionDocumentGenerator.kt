@@ -14,7 +14,7 @@ class TransactionDocumentGenerator {
         fun gen(tdg: TransactionDocumentGenerator): TransactionDocument {
             return TransactionDocument(
                 guid = UUID.randomUUID().toString(),
-                originId = "originId",
+                originId = UUID.randomUUID().toString(),
                 executedAt = Instant.now().toEpochMilli(),
                 type = tdg.randomTransactionType(),
                 priceMoney = Money(tdg.randomDouble(), "USD"),
