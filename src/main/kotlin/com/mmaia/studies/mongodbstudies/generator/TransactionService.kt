@@ -1,6 +1,5 @@
-package com.mmaia.studies.mongodbstudies
+package com.mmaia.studies.mongodbstudies.generator
 
-import com.mmaia.studies.mongodbstudies.generator.TransactionDocumentGenerator
 import com.mmaia.studies.mongodbstudies.repository.TransactionRepository
 import kotlinx.coroutines.*
 import org.springframework.boot.context.event.ApplicationReadyEvent
@@ -13,6 +12,8 @@ class TransactionService(
     val transactionRepository: TransactionRepository,
     val transactionDocumentGenerator: TransactionDocumentGenerator
 ) {
+
+
 
     @EventListener(ApplicationReadyEvent::class)
     fun createAndSave() {
