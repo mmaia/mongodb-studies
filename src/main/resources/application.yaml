@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       database: transactions
-      uri: mongodb://root:rootpassword@localhost:27017
+      uri: mongodb://root:rootpassword@localhost:27017/?retryWrites=true&w=1&j=false
       auto-index-creation: true
       username: root
       password: rootpassword
